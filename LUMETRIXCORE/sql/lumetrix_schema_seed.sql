@@ -131,7 +131,7 @@ INSERT INTO recipients
     (id, campaign_id, email, state, provider_id)
 VALUES
     --(1,  1,  'cliente1@example.com',  'sent',    're_msg_0001'),
-    (2,  1,  'cliente1b@example.com', 'sent',    're_msg_0002'),
+    --(2,  1,  'cliente1b@example.com', 'sent',    're_msg_0002'),
     (3,  2,  'cliente2@example.com',  'sent',    're_msg_0003'),
     (4,  2,  'cliente2b@example.com', 'failed',  ''),
     (5,  3,  'cliente3@example.com',  'queued',  ''),
@@ -146,7 +146,7 @@ INSERT INTO suppression
     (id, user_id, email, reason)
 VALUES
     --(1,  1,  'baja1@example.com',     'unsubscribe'),
-    (2,  1,  'rebote1@example.com',   'bounce'),
+    --(2,  1,  'rebote1@example.com',   'bounce'),
     (3,  2,  'baja2@example.com',     'unsubscribe'),
     (4,  2,  'queja2@example.com',    'complaint'),
     (5,  3,  'rebote3@example.com',   'bounce'),
@@ -161,7 +161,7 @@ INSERT INTO config_files
     (id, user_id, kind, content)
 VALUES
     --(1,  1, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Producto demo", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
-    (2,  1, 'afinidad', E'[FAMILIAS]\nSalud\nBienestar\nEducacion\n\n[SUBCATEGORIAS]\nSalud: Sistema Nervioso, Metabolismo\n'),
+    --(2,  1, 'afinidad', E'[FAMILIAS]\nSalud\nBienestar\nEducacion\n\n[SUBCATEGORIAS]\nSalud: Sistema Nervioso, Metabolismo\n'),
     (3,  1, 'config',   E'PESO_ULTIMO_PRODUCTO=0.7\nPESO_RESTO_HISTORIAL=0.3\nPRODUCTOS_OUTPUT=4\n'),
     (4,  2, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Metodo Calma", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
     (5,  2, 'afinidad', E'[FAMILIAS]\nSalud\n\n[WELLNESS]\nSalud\n'),
