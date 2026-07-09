@@ -100,7 +100,7 @@ INSERT INTO users
     (id, email, name, password_hash, claude_token_enc, resend_token_enc,
      from_name, from_email, template, subscription_status, hotmart_subscriber_id, created_at)
 VALUES
-    (1,  'admin@lumetrixcore.com', 'Admin',        'pbkdf2_sha256$29000$seed0001$aWRhZG1pbg==', '', '',                 'Lumetrix',       'hola@lumetrixcore.com',  'minimal',     'active',    'HM-0001', '2026-06-01 09:00:00'),
+   -- (1,  'admin@lumetrixcore.com', 'Admin',        'pbkdf2_sha256$29000$seed0001$aWRhZG1pbg==', '', '',                 'Lumetrix',       'hola@lumetrixcore.com',  'minimal',     'active',    'HM-0001', '2026-06-01 09:00:00'),
     (2,  'ana.lopez@gmail.com',    'Ana López',    'pbkdf2_sha256$29000$seed0002$aWRhbmExMDI=', 'sk-ant-ana',  're_ana_123',     'Bienestar Ana',  'hola@bienestarana.com',  'editorial',   'active',    'HM-0002', '2026-06-02 10:15:00'),
     (3,  'beto.ruiz@hotmail.com',  'Beto Ruiz',    'pbkdf2_sha256$29000$seed0003$aWRiZXRvMTAz', '',            're_beto_456',    'Reto Metabolico','envios@retobeto.com',    'wellness',    'active',    'HM-0003', '2026-06-03 11:30:00'),
     (4,  'carla.diaz@outlook.com', 'Carla Díaz',   'pbkdf2_sha256$29000$seed0004$aWRjYXJsYTA0', '',            '',               'Carla Academy',  'info@carladiaz.com',     'corporativo', 'suspended', 'HM-0004', '2026-06-04 08:45:00'),
