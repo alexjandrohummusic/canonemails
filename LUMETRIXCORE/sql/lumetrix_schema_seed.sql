@@ -162,7 +162,7 @@ INSERT INTO config_files
 VALUES
     --(1,  1, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Producto demo", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
     --(2,  1, 'afinidad', E'[FAMILIAS]\nSalud\nBienestar\nEducacion\n\n[SUBCATEGORIAS]\nSalud: Sistema Nervioso, Metabolismo\n'),
-    (3,  1, 'config',   E'PESO_ULTIMO_PRODUCTO=0.7\nPESO_RESTO_HISTORIAL=0.3\nPRODUCTOS_OUTPUT=4\n'),
+    --(3,  1, 'config',   E'PESO_ULTIMO_PRODUCTO=0.7\nPESO_RESTO_HISTORIAL=0.3\nPRODUCTOS_OUTPUT=4\n'),
     (4,  2, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Metodo Calma", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
     (5,  2, 'afinidad', E'[FAMILIAS]\nSalud\n\n[WELLNESS]\nSalud\n'),
     (6,  2, 'config',   E'UMBRAL_DIRECTO=75\nUMBRAL_RELACIONADO=50\nUMBRAL_EXPLORATORIO=30\n'),
