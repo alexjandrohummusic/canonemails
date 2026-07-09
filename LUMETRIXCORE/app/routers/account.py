@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from ..db import get_db
@@ -85,3 +85,16 @@ def validate_config(u: models.User = Depends(current_user), db: Session = Depend
     return {"ok": len(nuevas) == 0 and len(cat) > 0, "productos": len(cat), "principales": len(principales),
             "categorias_nuevas": [{"categoria": c, "producto": n} for c, n, i in nuevas]}
 
+@router.get("/users")
+def list_users(u: models.User = Depends(current_user), db: Session = Depends(get_db)):
+    # Solo el admin puede listar todos los usuarios. Quita este bloque si quieres
+    # que cualquier usuario autenticado pueda hacerlo.
+    from ..config import settings
+    if u.email != settings.ADMIN_EMAIL:
+        raise HTTPException(403, "Solo el administrador puede listar usuarios.")
+    users = db.query(models.User).order_by(models.User.id).all()
+    return [{"id": x.id, "email": x.email, "name": x.name, "from_name": x.from_name,
+             "from_email": x.from_email, "template": x.template,
+             "subscription_status": x.subscription_status, "hotmart_subscriber_id": x.hotmart_subscriber_id,
+             "has_claude": bool(x.claude_token_enc), "has_resend": bool(x.resend_token_enc),
+             "created_at": x.created_at} for x in users]
