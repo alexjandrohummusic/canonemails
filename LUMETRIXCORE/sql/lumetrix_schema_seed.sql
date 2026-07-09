@@ -115,7 +115,7 @@ VALUES
 INSERT INTO campaigns
     (id, user_id, status, mode, blocks_json, report_json, total, sent, failed, created_at)
 VALUES
-    (1,  1,  'done',      'auto',      '[{"type": "tsl", "email": "cliente1@example.com", "nombre": "Cliente"}]',       '{"clientes": 5, "bloques": 5, "distribucion_modo": {"tsl": 3, "crosssell": 2}}',   5,   5,   0, '2026-06-11 09:00:00'),
+    --(1,  1,  'done',      'auto',      '[{"type": "tsl", "email": "cliente1@example.com", "nombre": "Cliente"}]',       '{"clientes": 5, "bloques": 5, "distribucion_modo": {"tsl": 3, "crosssell": 2}}',   5,   5,   0, '2026-06-11 09:00:00'),
     (2,  2,  'sending',   'auto',      '[{"type": "crosssell", "email": "cliente2@example.com", "nombre": "Cliente"}]', '{"clientes": 120, "bloques": 118, "distribucion_modo": {"auto": 118}}',            120, 45,  2, '2026-06-12 10:00:00'),
     (3,  3,  'generated', 'crosssell', '[{"type": "crosssell", "email": "cliente3@example.com", "nombre": "Cliente"}]', '{"clientes": 30, "bloques": 30, "distribucion_modo": {"crosssell": 30}}',          30,  0,   0, '2026-06-13 11:00:00'),
     (4,  4,  'paused',    'auto',      '[{"type": "tsl", "email": "cliente4@example.com", "nombre": "Cliente"}]',       '{"clientes": 500, "bloques": 495, "distribucion_modo": {"tsl": 200, "crosssell": 295}}', 500, 200, 5, '2026-06-14 08:30:00'),
@@ -130,7 +130,7 @@ VALUES
 INSERT INTO recipients
     (id, campaign_id, email, state, provider_id)
 VALUES
-    (1,  1,  'cliente1@example.com',  'sent',    're_msg_0001'),
+    --(1,  1,  'cliente1@example.com',  'sent',    're_msg_0001'),
     (2,  1,  'cliente1b@example.com', 'sent',    're_msg_0002'),
     (3,  2,  'cliente2@example.com',  'sent',    're_msg_0003'),
     (4,  2,  'cliente2b@example.com', 'failed',  ''),
@@ -145,7 +145,7 @@ VALUES
 INSERT INTO suppression
     (id, user_id, email, reason)
 VALUES
-    (1,  1,  'baja1@example.com',     'unsubscribe'),
+    --(1,  1,  'baja1@example.com',     'unsubscribe'),
     (2,  1,  'rebote1@example.com',   'bounce'),
     (3,  2,  'baja2@example.com',     'unsubscribe'),
     (4,  2,  'queja2@example.com',    'complaint'),
@@ -160,7 +160,7 @@ VALUES
 INSERT INTO config_files
     (id, user_id, kind, content)
 VALUES
-    (1,  1, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Producto demo", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
+    --(1,  1, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Producto demo", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
     (2,  1, 'afinidad', E'[FAMILIAS]\nSalud\nBienestar\nEducacion\n\n[SUBCATEGORIAS]\nSalud: Sistema Nervioso, Metabolismo\n'),
     (3,  1, 'config',   E'PESO_ULTIMO_PRODUCTO=0.7\nPESO_RESTO_HISTORIAL=0.3\nPRODUCTOS_OUTPUT=4\n'),
     (4,  2, 'catalogo', '{"catalogo": [{"id": 1, "nombre": "Metodo Calma", "esPrincipal": true, "categoria": "Salud/Sistema Nervioso"}]}'),
