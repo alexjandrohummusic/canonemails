@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    ports: ["8000:8000"]
+    env_file: .env
+    depends_on: [postgres, redis]
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+  worker:
+    build: .
+    env_file: .env
+    depends_on: [redis, postgres]
+    command: celery -A app.workers.celery_app.celery_app worker --loglevel=info
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: lumetrix
+      POSTGRES_PASSWORD: lumetrix
+      POSTGRES_DB: lumetrix
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  redis:
+    image: redis:7-alpine
+volumes:
+  pgdata:

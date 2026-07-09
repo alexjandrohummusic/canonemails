@@ -1,0 +1,99 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LumetrixCore · Cañón de Correos</title>
+<link rel="stylesheet" href="/static/style.css"></head><body>
+<header><b>LumetrixCore</b> · Cañón de Correos <span id="who" class="muted" style="margin-left:auto;color:#cfe4ec"></span></header>
+<div class="wrap">
+
+  <div id="authView" class="card">
+    <h2>Entrar</h2>
+    <label>Correo</label><input id="aemail" type="email" autocomplete="username">
+    <label>Contraseña</label><input id="apass" type="password" autocomplete="current-password">
+    <div class="row" style="margin-top:12px"><button onclick="login()">Iniciar sesión</button></div>
+    <p class="muted" style="margin-top:10px">El registro público estará disponible pronto.</p>
+    <p id="autherr" class="bad"></p>
+  </div>
+
+  <div id="app" class="hidden">
+    <div class="card" style="padding:12px 16px"><div id="setupStrip"></div></div>
+    <div class="tabs">
+      <button class="on" onclick="tab('datos',event)">1 · Datos</button>
+      <button onclick="tab('conx',event)">2 · Conexión</button>
+      <button onclick="tab('camp',event)">3 · Campaña</button>
+      <button onclick="tab('tpl',event)">Plantillas</button>
+      <button class="sec" style="flex:0" onclick="logout()">Salir</button>
+    </div>
+
+    <!-- 1 DATOS -->
+    <div id="datos" class="tabview">
+      <div class="card"><h2>Paso 1 · Sube tu lista de ventas</h2>
+        <p class="muted">Sube tu archivo de Hotmart (.xls, .xlsx, .csv). Con él preparamos automáticamente tu configuración; solo tendrás que completar el catálogo.</p>
+        <label>Lista de ventas</label><input id="salesfile" type="file">
+        <div class="row" style="margin-top:10px"><button onclick="uploadSales()">Subir ventas</button></div>
+        <div id="salesout"></div>
+      </div>
+      <div class="card"><h2>Paso 2 · Completa tu catálogo</h2>
+        <div class="note">Es lo único que se llena a mano: por cada producto pon su <b>categoría</b> (Familia/Subcategoría), su <b>link de landing</b>, y las descripciones. Marca <code>esPrincipal:false</code> los order bumps. <b>La afinidad la calculamos nosotros</b> — no tienes que tocarla.</div>
+        <div class="row" style="margin:8px 0"><button class="sec" style="flex:0" onclick="downloadCatalog()">Descargar catálogo</button>
+        <label class="sec" style="flex:0;background:#eef3f7;border-radius:7px;padding:10px 16px;cursor:pointer;color:#0B2545;font-weight:700;font-size:14px">Cargar archivo…<input id="catfile" type="file" accept=".json" style="display:none" onchange="loadCatFile()"></label></div>
+        <textarea id="cf_catalogo" style="min-height:260px"></textarea>
+        <div class="row" style="margin-top:10px"><button onclick="saveCatalog()">Guardar catálogo</button></div>
+        <div id="catval"></div>
+      </div>
+    </div>
+
+    <!-- 2 CONEXIÓN -->
+    <div id="conx" class="tabview hidden">
+      <div class="card"><h2>Envío (Resend)</h2>
+        <p class="muted">Usamos tu cuenta de Resend para enviar. Se guarda en tu cuenta y no se muestra.</p>
+        <label>Token de Resend <span id="st_resend" class="pill">pendiente</span></label>
+        <input id="t_resend" type="password" placeholder="re_...">
+        <p class="muted">Lo obtienes en resend.com → API Keys. (La IA la ponemos nosotros; no necesitas token de Claude.)</p>
+        <div class="row" style="margin-top:10px"><button onclick="saveTokens()">Guardar</button></div>
+        <p id="tokmsg" class="ok"></p>
+      </div>
+      <div class="card"><h2>Identidad de remitente</h2>
+        <div class="row"><div><label>Nombre visible</label><input id="p_fromname" placeholder="Mi Marca"></div>
+        <div><label>Correo de envío (tu dominio)</label><input id="p_fromemail" placeholder="hola@tudominio.com"></div></div>
+        <div class="row" style="margin-top:10px"><button onclick="saveProfile()">Guardar remitente</button></div>
+        <p id="profmsg" class="ok"></p>
+      </div>
+      <div class="card"><h2>Verificar dominio</h2>
+        <label>Dominio</label><input id="dom" placeholder="tudominio.com">
+        <div class="row" style="margin-top:10px"><button class="sec" onclick="checkDom()">Verificar DNS</button></div>
+        <div id="domout"></div>
+      </div>
+    </div>
+
+    <!-- 3 CAMPAÑA -->
+    <div id="camp" class="tabview hidden">
+      <div class="card"><h2>Genera y envía</h2>
+        <p class="muted">Usa la última lista de ventas que subiste y tu catálogo. La IA decide el mejor formato por cliente.</p>
+        <label>Modo</label><select id="mode">
+          <option value="auto">Automático (la IA decide) — recomendado</option>
+          <option value="crosssell">Venta cruzada (forzado)</option>
+          <option value="tsl">Carta de ventas TSL (forzado · requiere ≥2 principales)</option>
+        </select>
+        <div class="row" style="margin-top:12px"><button onclick="gen()">Generar</button></div>
+        <div id="genout"></div>
+      </div>
+      <div id="previewCard" class="card hidden"><h2>Vista previa (primeros 3)</h2>
+        <div id="previews"></div>
+        <div class="row" style="margin-top:12px"><button onclick="send()">Enviar campaña</button>
+        <button class="sec" onclick="refreshStatus()">Actualizar estado</button></div>
+        <div id="sendout"></div>
+      </div>
+    </div>
+
+    <!-- PLANTILLAS -->
+    <div id="tpl" class="tabview hidden">
+      <div class="card"><h2>Elige tu diseño de correo</h2>
+        <div id="tpllist"></div>
+        <div class="row" style="margin:8px 0"><button class="sec" style="flex:0" onclick="tplKind='tsl';loadTplPrev()">Ver como TSL</button>
+        <button class="sec" style="flex:0" onclick="tplKind='crosssell';loadTplPrev()">Ver como venta cruzada</button></div>
+        <iframe id="tplframe"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/static/app.js"></script></body></html>

@@ -1,0 +1,24 @@
+{
+  "catalogo": [
+    {"id": 1, "nombre": "Método Calma: Nervio Vago en 8 pasos", "esPrincipal": true,
+     "linkCompra": "https://ejemplo.com/calma/checkout", "linkLanding": "https://ejemplo.com/calma",
+     "orderBumps": ["Audio de respiración guiada"], "categoria": "Salud/Sistema Nervioso",
+     "descripcionCorta": "Un manual práctico para calmar tu sistema nervioso en 15 minutos al día.",
+     "descripcionCuriosity": "Tu cuerpo tiene un freno biológico; si está débil, la ansiedad no se va."},
+    {"id": 2, "nombre": "Audio de respiración guiada", "esPrincipal": false,
+     "linkCompra": "https://ejemplo.com/audio/checkout", "linkLanding": "",
+     "orderBumps": [], "categoria": "Bienestar/Somático",
+     "descripcionCorta": "10 audios para bajar la activación en 3 minutos.",
+     "descripcionCuriosity": "El atajo de 3 respiraciones que resetea tu día."},
+    {"id": 3, "nombre": "Interruptor Metabólico 35+", "esPrincipal": true,
+     "linkCompra": "https://ejemplo.com/reto/checkout", "linkLanding": "https://ejemplo.com/reto",
+     "orderBumps": [], "categoria": "Salud/Metabolismo",
+     "descripcionCorta": "Protocolo de 7 días para reactivar tu metabolismo sin pasar hambre.",
+     "descripcionCuriosity": "El interruptor que tu cuerpo apagó después de los 35."},
+    {"id": 4, "nombre": "IA Desde Cero para Adultos", "esPrincipal": true,
+     "linkCompra": "https://ejemplo.com/ia/checkout", "linkLanding": "https://ejemplo.com/ia",
+     "orderBumps": [], "categoria": "Educación/Inteligencia Artificial",
+     "descripcionCorta": "De cero a productivo con IA, en tu idioma y sin tecnicismos.",
+     "descripcionCuriosity": "Lo que los de 22 hacen en minutos y a ti te toma toda la tarde."}
+  ]
+}

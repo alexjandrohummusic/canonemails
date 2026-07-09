@@ -1,0 +1,16 @@
+[FAMILIAS]
+Salud
+Bienestar
+Educación
+
+[SUBCATEGORIAS]
+Salud: Sistema Nervioso, Metabolismo, Estética Corporal
+Bienestar: Somático
+Educación: Inteligencia Artificial, Idiomas
+
+[WELLNESS]
+Salud, Bienestar
+
+[VECINDADES]
+Salud/Sistema Nervioso <-> Bienestar/Somático : 90
+Educación/Inteligencia Artificial <-> Educación/Idiomas : 75
