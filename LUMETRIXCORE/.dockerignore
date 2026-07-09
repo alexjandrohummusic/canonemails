@@ -1,0 +1,6 @@
+.venv
+lumetrix.db
+.env
+__pycache__/
+*.pyc
+data/tenants/

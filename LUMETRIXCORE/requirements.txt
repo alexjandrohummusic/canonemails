@@ -17,3 +17,4 @@ anthropic==0.34.2
 resend==2.4.0
 celery==5.4.0
 redis==5.0.8
+psycopg[binary]==3.2.1
